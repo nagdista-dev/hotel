@@ -42,22 +42,35 @@ const Navbar = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
     if (location.pathname !== "/") {
       setIsScrolled(true);
-      return 0;
     } else {
       setIsScrolled(false);
     }
-    setIsScrolled((prev) => {
-      location.pathname !== "/" ? true : prev;
-    });
-    const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [location.pathname]);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     console.log(window.scrollY);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  // }, [window.scroll]);
   // !Handlers
 
   return (

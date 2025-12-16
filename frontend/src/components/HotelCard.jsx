@@ -7,15 +7,12 @@ const HotelCard = ({ room, idx }) => {
     <Link
       key={room._id}
       to={"/rooms/" + room._id}
-      onclick={() => {
+      onClick={() => {
         scrollTo(0, 0);
       }}
+      className="relative max-w-70 w-full rounded-xl overflow-hidden bg-white text-gray-500/90 shadow-[0px_4px_4px_rgba(0,0,0,0.1)]"
     >
-      <img
-        src={room.images[0]}
-        alt=""
-        className="relative max-w-70 w-full rounded-xl overflow-hidden bg-white text-gray-500/90 shadow-[0px_4px_4px_rgba(0,0,0,0.5)]"
-      />
+      <img src={room.images[0]} alt="" className="" />
       {idx % 2 === 0 && (
         <p className="px-3 py-1 absolute top-3 left-3 text-xs bg-white text-gray-800      font-medium rounded-full">
           Best Seller
@@ -52,3 +49,5 @@ const HotelCard = ({ room, idx }) => {
 };
 
 export default HotelCard;
+
+// relative max-w-70 w-full rounded-xl overflow-hidden bg-white text-gray-500/90 shadow-[0px_4px_4px_rgba(0,0,0,0.5)]
